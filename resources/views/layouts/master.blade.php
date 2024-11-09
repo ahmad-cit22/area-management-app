@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="assets/css/select2.min.css">
     <!-- Sweet alert Css -->
     <link rel="stylesheet" href="assets/css/sweetalert.css">
+
     <!-- Flatpickr Css -->
     <link rel="stylesheet" href="assets/css/flatpickr.min.css">
     <!-- Fancy box Css -->
