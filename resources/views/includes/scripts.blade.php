@@ -21,4 +21,12 @@
 <!-- Data table js -->
 <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
 
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
+
 @stack('custom-scripts')
