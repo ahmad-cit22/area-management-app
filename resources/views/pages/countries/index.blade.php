@@ -107,6 +107,8 @@
             // Add Button Click
             $(document).on('click', '.create-btn', function() {
                 $('#addCountryModal').modal('show');
+                $('#countryNameError').text('');
+                $('#addCountryForm')[0].reset();
             });
 
             // Add Country
@@ -161,6 +163,12 @@
                     $('#editCountryName').val(data.name);
                     $('#editCountryModal').modal('show');
                 });
+            });
+
+            // when modal closes
+            $('#editCountryModal').on('hidden.bs.modal', function() {
+                $('#editCountryForm')[0].reset();
+                $('#editCountryNameError').text('');
             });
 
             // Edit Country

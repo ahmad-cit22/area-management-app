@@ -37,7 +37,10 @@
             responsive: true,
             fixedColumns: true,
             fixedHeader: true,
+            // order: [[0, 'desc']],
         });
+
+        $('.select2').select2();
     });
 </script>
 

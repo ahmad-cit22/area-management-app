@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StateRequest;
 use App\Models\Country;
 use App\Models\State;
 use App\Services\StateService;
@@ -35,7 +36,7 @@ class StateController extends Controller
      */
     public function index()
     {
-        $states = State::all();
+        $states = State::latest()->get();
         $countries = Country::all();
 
         return view('pages.states.index', compact('states', 'countries'));
@@ -44,12 +45,12 @@ class StateController extends Controller
     /**
      * Store a newly created state in storage
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StateRequest  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function store(StateRequest $request)
     {
-        $validated = $request->validate(['name' => 'required|unique:states']);
+        $validated = $request->validated();
 
         $this->stateService->create($validated);
 
@@ -57,15 +58,26 @@ class StateController extends Controller
     }
 
     /**
+     * Edit the specified state.
+     *
+     * @param State $state
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function edit(State $state)
+    {
+        return response()->json($state);
+    }
+
+    /**
      * Update an existing state in storage
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StateRequest  $request
      * @param  \App\Models\State  $state
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, State $state)
+    public function update(StateRequest $request, State $state)
     {
-        $validated = $request->validate(['name' => 'required|unique:states,name,' . $state->id]);
+        $validated = $request->validated();
 
         $this->stateService->update($state, $validated);
 

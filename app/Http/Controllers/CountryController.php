@@ -31,27 +31,14 @@ class CountryController extends Controller
      */
     public function index()
     {
-        $countries = Country::all();
+        $countries = Country::latest()->get();
         return view('pages.countries.index', compact('countries'));
-    }
-
-
-    /**
-     * Edit the specified country.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param Country $country
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function edit(Request $request, Country $country)
-    {
-        return response()->json($country);
     }
 
     /**
      * Store a newly created country.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \App\Http\Requests\CountryRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function store(CountryRequest $request)
@@ -60,6 +47,17 @@ class CountryController extends Controller
         $this->countryService->create($validated);
 
         return response()->json(['message' => 'Country created successfully']);
+    }
+
+    /**
+     * Edit the specified country.
+     *
+     * @param Country $country
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function edit(Country $country)
+    {
+        return response()->json($country);
     }
 
     /**

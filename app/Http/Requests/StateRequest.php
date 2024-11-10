@@ -22,7 +22,8 @@ class StateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required'
+            'name' => 'required',
+            'country_id' => 'required|exists:countries,id'
         ];
     }
 
@@ -30,6 +31,8 @@ class StateRequest extends FormRequest
     {
         return [
             'name.required' => 'State name is required',
+            'country_id.required' => 'Please select a country',
+            'country_id.exists' => 'Please select a valid country'
         ];
     }
 }

@@ -33,7 +33,7 @@ class CityController extends Controller
      */
     public function index()
     {
-        $cities = City::all();
+        $cities = City::latest()->get();
         $states = State::all();
 
         return view('pages.cities.index', compact('cities', 'states'));
@@ -56,6 +56,17 @@ class CityController extends Controller
     }
 
     /**
+     * Edit the specified city.
+     *
+     * @param City $city
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function edit(City $city)
+    {
+        return response()->json($city);
+    }
+
+    /**
      * Update the specified city.
      *
      * @param Request $request
@@ -65,7 +76,7 @@ class CityController extends Controller
      */
     public function update(Request $request, City $city)
     {
-        $validated = $request->validate(['name' => 'required|unique:cities,name,' . $city->id]);
+        $validated = $request->validate(['name' => 'required']);
 
         $this->cityService->update($city, $validated);
 
