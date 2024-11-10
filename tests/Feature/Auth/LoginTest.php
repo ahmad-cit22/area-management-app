@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 beforeEach(function () {
-    $this->artisan('migrate');
+    $this->artisan('migrate:fresh');
 });
 
 it('shows the login view', function () {
