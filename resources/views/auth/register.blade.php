@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>Register | Area Management System | Xgenious</title>
 
     <!-- favicon -->
@@ -56,10 +58,11 @@
                             <div class="single_input">
                                 <label class="label_title">Name</label>
                                 <div class="include_icon">
-                                    <input class="form--control radius-5" type="text" name="name"
+                                    <input class="form--control radius-5" id="name" type="text" name="name"
                                         value="{{ old('name') }}" placeholder="Enter your Full Name" required>
                                     <div class="icon"><span class="material-symbols-outlined">person</span></div>
                                 </div>
+                                <span class="text-danger small" id="nameError"></span>
                                 @error('name')
                                     <span class="text-danger small">{{ $message }}</span>
                                 @enderror
@@ -67,10 +70,11 @@
                             <div class="single_input">
                                 <label class="label_title">Username</label>
                                 <div class="include_icon">
-                                    <input class="form--control radius-5" type="text" name="username"
+                                    <input class="form--control radius-5" id="username" type="text" name="username"
                                         value="{{ old('username') }}" placeholder="Create a Unique Username" required>
                                     <div class="icon"><span class="material-symbols-outlined">person</span></div>
                                 </div>
+                                <span class="text-danger small" id="usernameError"></span>
                                 @error('username')
                                     <span class="text-danger small">{{ $message }}</span>
                                 @enderror
@@ -78,10 +82,11 @@
                             <div class="single_input">
                                 <label class="label_title">Email</label>
                                 <div class="include_icon">
-                                    <input class="form--control radius-5" type="email" name="email"
+                                    <input class="form--control radius-5" id="email" type="email" name="email"
                                         value="{{ old('email') }}" placeholder="Enter your email address" required>
                                     <div class="icon"><span class="material-symbols-outlined">mail</span></div>
                                 </div>
+                                <span class="text-danger small" id="emailError"></span>
                                 @error('email')
                                     <span class="text-danger small">{{ $message }}</span>
                                 @enderror
@@ -89,10 +94,11 @@
                             <div class="single_input">
                                 <label class="label_title">Password</label>
                                 <div class="include_icon">
-                                    <input class="form--control radius-5" type="password" name="password"
+                                    <input class="form--control radius-5" id="password" type="password" name="password"
                                         placeholder="Enter your password" required>
                                     <div class="icon"><span class="material-symbols-outlined">lock</span></div>
                                 </div>
+                                <span class="text-danger small" id="passwordError"></span>
                                 @error('password')
                                     <span class="text-danger small">{{ $message }}</span>
                                 @enderror
@@ -100,10 +106,11 @@
                             <div class="single_input">
                                 <label class="label_title">Confirm Password</label>
                                 <div class="include_icon">
-                                    <input class="form--control radius-5" type="password" name="password_confirmation"
-                                        placeholder="confirm password" required>
+                                    <input class="form--control radius-5" id="password_confirmation" type="password"
+                                        name="password_confirmation" placeholder="confirm password" required>
                                     <div class="icon"><span class="material-symbols-outlined">lock</span></div>
                                 </div>
+                                <span class="text-danger small" id="passwordConfirmationError"></span>
                                 @error('password_confirmation')
                                     <span class="text-danger small">{{ $message }}</span>
                                 @enderror
@@ -113,7 +120,8 @@
                             </div>
                             <div class="btn-wrapper mt-4">
                                 <p class="loginForm__wrapper__signup"><span>Already have an Account? </span> <a
-                                        href="{{ route('login') }}" class="loginForm__wrapper__signup__btn">Sign In</a>
+                                        href="{{ route('login') }}" class="loginForm__wrapper__signup__btn">Sign
+                                        In</a>
                                 </p>
                             </div>
                         </form>
@@ -154,6 +162,47 @@
     <script src="assets/js/fancybox.umd.js"></script>
     <!-- main js -->
     <script src="assets/js/main.js"></script>
+
+    <script>
+        $('#name').on('input', function() {
+            validateField('name', $(this).val(), '#nameError');
+        });
+
+        $('#username').on('input', function() {
+            validateField('username', $(this).val(), '#usernameError');
+        });
+
+        $('#email').on('input', function() {
+            validateField('email', $(this).val(), '#emailError');
+        });
+
+        $('#password').on('input', function() {
+            validateField('password', $(this).val(), '#passwordError');
+        });
+
+        $('#password_confirmation').on('input', function() {
+            validateField('password_confirmation', $(this).val(), '#passwordConfirmationError');
+        });
+
+        function validateField(field, value, errorSelector) {
+            $.ajax({
+                url: "{{ route('register.validate') }}",
+                method: 'POST',
+                data: {
+                    field: field,
+                    [field]: value,
+                    _token: $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function() {
+                    $(errorSelector).text('');
+                },
+                error: function(xhr) {
+                    const errors = xhr.responseJSON.errors || {};
+                    $(errorSelector).text(errors[field] ? errors[field][0] : '');
+                }
+            });
+        }
+    </script>
 
 
 </body>

@@ -14080,7 +14080,7 @@ span {
 }
 .custom_form .single_input:not(:first-child),
 .custom_form .form-group:not(:first-child) {
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 .custom_form .single_input .label-title,
 .custom_form .form-group .label-title {
