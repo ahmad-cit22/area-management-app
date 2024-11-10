@@ -61,6 +61,9 @@
                                         value="{{ old('email') }}" required>
                                     <div class="icon"><span class="material-symbols-outlined">mail</span></div>
                                 </div>
+                                @error('email')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="single_input">
                                 <label class="label_title">Password</label>
@@ -69,6 +72,9 @@
                                         placeholder="Enter your password" name="password" required>
                                     <div class="icon"><span class="material-symbols-outlined">lock</span></div>
                                 </div>
+                                @error('password')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="loginForm__wrapper__remember single_input">
                                 <div class="dashboard_checkBox">

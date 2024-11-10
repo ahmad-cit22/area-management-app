@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CountryRequest;
 use App\Models\Country;
 use App\Services\CountryService;
 use Illuminate\Http\Request;
@@ -34,15 +35,28 @@ class CountryController extends Controller
         return view('pages.countries.index', compact('countries'));
     }
 
+
+    /**
+     * Edit the specified country.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param Country $country
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function edit(Request $request, Country $country)
+    {
+        return response()->json($country);
+    }
+
     /**
      * Store a newly created country.
      *
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function store(CountryRequest $request)
     {
-        $validated = $request->validate(['name' => 'required|unique:countries']);
+        $validated = $request->validated();
         $this->countryService->create($validated);
 
         return response()->json(['message' => 'Country created successfully']);

@@ -11,7 +11,7 @@ class StateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,14 @@ class StateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required'
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'State name is required',
         ];
     }
 }

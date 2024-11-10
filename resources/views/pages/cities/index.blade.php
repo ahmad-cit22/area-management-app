@@ -10,9 +10,7 @@
                     </div>
                     <div class="col-6"></div>
                     <div class="col-3">
-                        <a href="{{ route('cities.create') }}">
-                            <button class="btn btn-primary float-end" id="create-button">Add City</button>
-                        </a>
+                        <button class="btn btn-primary float-end create-btn">Add City</button>
                     </div>
                 </div>
                 <div class="dashboard__card__inner border_top_1">
@@ -27,14 +25,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="table_row">
-                                    <td><span class="order_id">1</span></td>
-                                    <td class="">Bangladesh</td>
-                                    <td class="">Bangladesh</td>
-                                    <td>
-                                        @include('partials.action-buttons')
-                                    </td>
-                                </tr>
+                                @forelse ($cities as $city)
+                                    <tr class="table_row">
+                                        <td>
+                                            <span class="order_id">{{ $loop->iteration }}</span>
+                                        </td>
+                                        <td>{{ $city->name }}</td>
+                                        <td>{{ $city->state->name }}</td>
+                                        <td>
+                                            @include('partials.action-buttons', ['id' => $city->id])
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="3" class="text-center">No Countries Found</td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
@@ -42,8 +48,6 @@
             </div>
         </div>
     </div>
-
-
 @endsection
 
 @push('custom-scripts')

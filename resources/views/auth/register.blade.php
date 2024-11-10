@@ -56,26 +56,35 @@
                             <div class="single_input">
                                 <label class="label_title">Name</label>
                                 <div class="include_icon">
-                                    <input class="form--control radius-5" type="text" name="name" value="{{ old('name') }}"
-                                        placeholder="Enter your Full Name" required>
+                                    <input class="form--control radius-5" type="text" name="name"
+                                        value="{{ old('name') }}" placeholder="Enter your Full Name" required>
                                     <div class="icon"><span class="material-symbols-outlined">person</span></div>
                                 </div>
+                                @error('name')
+                                    <span class="text-danger small">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="single_input">
                                 <label class="label_title">Username</label>
                                 <div class="include_icon">
-                                    <input class="form--control radius-5" type="text" name="username" value="{{ old('username') }}"
-                                        placeholder="Create a Unique Username" required>
+                                    <input class="form--control radius-5" type="text" name="username"
+                                        value="{{ old('username') }}" placeholder="Create a Unique Username" required>
                                     <div class="icon"><span class="material-symbols-outlined">person</span></div>
                                 </div>
+                                @error('username')
+                                    <span class="text-danger small">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="single_input">
                                 <label class="label_title">Email</label>
                                 <div class="include_icon">
-                                    <input class="form--control radius-5" type="email" name="email" value="{{ old('email') }}"
-                                        placeholder="Enter your email address" required>
+                                    <input class="form--control radius-5" type="email" name="email"
+                                        value="{{ old('email') }}" placeholder="Enter your email address" required>
                                     <div class="icon"><span class="material-symbols-outlined">mail</span></div>
                                 </div>
+                                @error('email')
+                                    <span class="text-danger small">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="single_input">
                                 <label class="label_title">Password</label>
@@ -84,6 +93,9 @@
                                         placeholder="Enter your password" required>
                                     <div class="icon"><span class="material-symbols-outlined">lock</span></div>
                                 </div>
+                                @error('password')
+                                    <span class="text-danger small">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="single_input">
                                 <label class="label_title">Confirm Password</label>
@@ -92,13 +104,17 @@
                                         placeholder="confirm password" required>
                                     <div class="icon"><span class="material-symbols-outlined">lock</span></div>
                                 </div>
+                                @error('password_confirmation')
+                                    <span class="text-danger small">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="btn_wrapper single_input">
                                 <button type="submit" class="cmn_btn w-100 radius-5">Sign Up</button>
                             </div>
                             <div class="btn-wrapper mt-4">
                                 <p class="loginForm__wrapper__signup"><span>Already have an Account? </span> <a
-                                        href="{{ route('login') }}" class="loginForm__wrapper__signup__btn">Sign In</a></p>
+                                        href="{{ route('login') }}" class="loginForm__wrapper__signup__btn">Sign In</a>
+                                </p>
                             </div>
                         </form>
                     </div>
@@ -107,7 +123,7 @@
             <div class="loginForm__right loginForm__bg " style="background-image: url(assets/img/login.jpg);">
                 <div class="loginForm__right__logo">
                     <div class="loginForm__logo">
-                        <a href="{{route('dashboard')}}"><img src="assets/img/logo.web" alt=""></a>
+                        <a href="{{ route('dashboard') }}"><img src="assets/img/logo.web" alt=""></a>
                     </div>
                 </div>
             </div>

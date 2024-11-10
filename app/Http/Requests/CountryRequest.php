@@ -11,7 +11,7 @@ class CountryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,15 @@ class CountryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|unique:countries'
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'Country name is required',
+            'name.unique' => 'Country name already exists',
         ];
     }
 }
