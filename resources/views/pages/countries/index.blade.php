@@ -26,13 +26,21 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="table_row">
-                                    <td><span class="order_id">1</span></td>
-                                    <td class="">Bangladesh</td>
-                                    <td>
-                                        @include('partials.action-buttons', ['id' => 1])
-                                    </td>
-                                </tr>
+                                @forelse ($countries as $country)
+                                    <tr class="table_row">
+                                        <td>
+                                            <span class="order_id">{{ $loop->iteration }}</span>
+                                        </td>
+                                        <td>{{ $country->name }}</td>
+                                        <td>
+                                            @include('partials.action-buttons', ['id' => 1])
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="3" class="text-center">No Countries Found</td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
