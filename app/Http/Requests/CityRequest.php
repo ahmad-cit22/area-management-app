@@ -22,7 +22,7 @@ class CityRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
+            'name' => 'required|unique:cities,name,NULL,id,state_id,' . $this->state_id,
             'state_id' => 'required|exists:states,id'
         ];
     }
@@ -31,6 +31,7 @@ class CityRequest extends FormRequest
     {
         return [
             'name.required' => 'City name is required',
+            'name.unique' => 'There is already a city within the same state',
             'state_id.required' => 'Please select a state',
             'state_id.exists' => 'Please select a valid state'
         ];

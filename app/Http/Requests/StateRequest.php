@@ -22,7 +22,7 @@ class StateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
+            'name' => 'required|unique:states,name,NULL,id,country_id,' . $this->country_id,
             'country_id' => 'required|exists:countries,id'
         ];
     }
@@ -31,6 +31,7 @@ class StateRequest extends FormRequest
     {
         return [
             'name.required' => 'State name is required',
+            'name.unique' => 'There is already a state within the same country',
             'country_id.required' => 'Please select a country',
             'country_id.exists' => 'Please select a valid country'
         ];

@@ -37,7 +37,7 @@ class StateController extends Controller
     public function index()
     {
         $states = State::latest()->get();
-        $countries = Country::all();
+        $countries = Country::latest()->get();
 
         return view('pages.states.index', compact('states', 'countries'));
     }

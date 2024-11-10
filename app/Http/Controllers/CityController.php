@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CityRequest;
 use App\Models\City;
 use App\Models\State;
 use App\Services\CityService;
@@ -34,7 +35,7 @@ class CityController extends Controller
     public function index()
     {
         $cities = City::latest()->get();
-        $states = State::all();
+        $states = State::latest()->get();
 
         return view('pages.cities.index', compact('cities', 'states'));
     }
@@ -42,13 +43,13 @@ class CityController extends Controller
     /**
      * Store a newly created city.
      *
-     * @param Request $request
+     * @param CityRequest $request
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function store(CityRequest $request)
     {
-        $validated = $request->validate(['name' => 'required|unique:cities']);
+        $validated = $request->validated();
 
         $this->cityService->create($validated);
 
@@ -69,14 +70,14 @@ class CityController extends Controller
     /**
      * Update the specified city.
      *
-     * @param Request $request
+     * @param CityRequest $request
      * @param City    $city
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, City $city)
+    public function update(CityRequest $request, City $city)
     {
-        $validated = $request->validate(['name' => 'required']);
+        $validated = $request->validated();
 
         $this->cityService->update($city, $validated);
 
