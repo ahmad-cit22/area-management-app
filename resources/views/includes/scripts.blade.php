@@ -29,4 +29,16 @@
     });
 </script>
 
+<script>
+    $(document).ready(function() {
+        $('.data-table').DataTable({
+            processing: true,
+            serverSide: false,
+            responsive: true,
+            fixedColumns: true,
+            fixedHeader: true,
+        });
+    });
+</script>
+
 @stack('custom-scripts')

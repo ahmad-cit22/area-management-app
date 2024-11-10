@@ -15,11 +15,11 @@
     <div class="col-sm-4">
         <div class="dashboard__header__right">
             <div class="dashboard__header__right__flex">
-                <div class="dashboard__header__right__item">
+                {{-- <div class="dashboard__header__right__item">
                     <a href="javascript:void(0)" class="dashboard__header__notification__icon lightMode"
                         id="mode_change"> <i class="material-symbols-outlined">wb_sunny</i>
                     </a>
-                </div>
+                </div> --}}
                 <div class="dashboard__header__right__item">
                     <div class="dashboard__header__author">
                         <a href="javascript:void(0)" class="dashboard__header__author__flex flex-btn">
