@@ -4,10 +4,11 @@ use App\Models\Country;
 use App\Models\State;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+// use Illuminate\Foundation\Testing\RefreshDatabase;
 
 beforeEach(function () {
-    $this->artisan('migrate:fresh');
+    // $this->artisan('migrate:fresh');
+    
     $this->user = User::factory()->create([
         'password' => Hash::make('password123'),
     ]);

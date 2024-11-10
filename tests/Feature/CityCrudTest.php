@@ -4,10 +4,10 @@ use App\Models\City;
 use App\Models\State;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+// use Illuminate\Foundation\Testing\RefreshDatabase;
 
 beforeEach(function () {
-    $this->artisan('migrate:fresh');
+    // $this->artisan('migrate:fresh');
     $this->user = User::factory()->create([
         'password' => Hash::make('password123'),
     ]);
@@ -16,7 +16,7 @@ beforeEach(function () {
 
 it('can display a list of cities', function () {
     City::factory()->count(3)->create();
-    
+
     $response = $this->get(route('cities.index'));
 
     $response->assertStatus(200);

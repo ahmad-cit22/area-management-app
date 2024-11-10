@@ -4,10 +4,10 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+// use Illuminate\Foundation\Testing\RefreshDatabase;
 
 beforeEach(function () {
-    $this->artisan('migrate:fresh');
+    // $this->artisan('migrate:fresh');
 });
 
 it('shows the login view', function () {

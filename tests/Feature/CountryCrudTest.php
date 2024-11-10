@@ -6,10 +6,10 @@ use App\Services\CountryService;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+// use Illuminate\Foundation\Testing\RefreshDatabase;
 
 beforeEach(function () {
-    $this->artisan('migrate:fresh');
+    // $this->artisan('migrate:fresh');
     $this->user = User::factory()->create([
         'password' => Hash::make('password123'),
     ]);
