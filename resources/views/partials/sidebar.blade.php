@@ -9,38 +9,20 @@
         </div>
     </div>
     <div class="dashboard__bottom mt-5">
-        <div class="dashboard__bottom__search mb-3">
-            <input class="form--control w-100" type="text" placeholder="Search here..." id="search_sidebarList">
-        </div>
         <ul class="dashboard__bottom__list dashboard-list">
-            <li class="dashboard__bottom__list__item has-children show open active">
+            <li class="dashboard__bottom__list__item {{request()->routeIs('dashboard') ? 'active' : ''}}">
                 <a href="{{route('dashboard')}}"><i class="material-symbols-outlined">dashboard</i>
                     <span class="icon_title">Dashboard</span>
                 </a>
             </li>
-            <li class="dashboard__bottom__list__item has-children">
-                <a href="basic_form.html"><span class="icon_title">Form</span></a>
+            <li class="dashboard__bottom__list__item {{request()->routeIs('countries.index') ? 'active' : ''}}">
+                <a href="{{route('countries.index')}}"><span class="icon_title">Countries</span></a>
             </li>
-            <li class="dashboard__bottom__list__item has-children">
-                <a href="table.html"><span class="icon_title">Table</span></a>
+            <li class="dashboard__bottom__list__item {{request()->routeIs('states.index') ? 'active' : ''}}">
+                <a href="{{route('states.index')}}"><span class="icon_title">States</span></a>
             </li>
-            <li class="dashboard__bottom__list__item has-children">
-                <a href="javascript:void(0)"><i class="material-symbols-outlined">group</i> <span
-                        class="icon_title">User</span></a>
-                <ul class="submenu">
-                    <li class="dashboard__bottom__list__item">
-                        <a href="sign_in.html">Login</a>
-                    </li>
-                    <li class="dashboard__bottom__list__item">
-                        <a href="sign_up.html">Register</a>
-                    </li>
-                    <li class="dashboard__bottom__list__item">
-                        <a href="forgot_password.html">Reset Password</a>
-                    </li>
-                    <li class="dashboard__bottom__list__item">
-                        <a href="mail_varification.html">Mail Varification</a>
-                    </li>
-                </ul>
+            <li class="dashboard__bottom__list__item {{request()->routeIs('cities.index') ? 'active' : ''}}">
+                <a href="{{route('cities.index')}}"><span class="icon_title">Cities</span></a>
             </li>
             <li class="dashboard__bottom__list__item">
                 <form action="{{ route('logout') }}" method="POST" class="inline">

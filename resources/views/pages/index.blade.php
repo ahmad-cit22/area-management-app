@@ -5,9 +5,9 @@
         <div class="dashboard__inner__header">
             <div class="dashboard__inner__header__flex">
                 <div class="dashboard__inner__header__left">
-                    <h4 class="dashboard__inner__header__title">Good Morning, {{ Auth::user()->name }}
+                    <h4 class="dashboard__inner__header__title">Good Morning, {{ Auth::user()->name }}!
                     </h4>
-                    <p class="dashboard__inner__header__para">Manage your areas
+                    <p class="dashboard__inner__header__para mt-3">Manage your areas
                         here</p>
                 </div>
             </div>

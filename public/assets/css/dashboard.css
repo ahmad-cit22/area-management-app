@@ -17074,7 +17074,7 @@ textarea.textarea-height {
 
 /* eCommerce Home page css */
 .dashboard_promo__single {
-  height: 100%;
+  height: 110%;
   border: 1px solid var(--border-color);
   text-align: center;
 }

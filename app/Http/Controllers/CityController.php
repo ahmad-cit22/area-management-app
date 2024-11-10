@@ -34,7 +34,7 @@ class CityController extends Controller
     {
         $cities = City::all();
 
-        return view('cities.index', compact('cities'));
+        return view('pages.cities.index', compact('cities'));
     }
 
     /**

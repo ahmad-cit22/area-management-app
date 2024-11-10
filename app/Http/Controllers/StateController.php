@@ -36,7 +36,7 @@ class StateController extends Controller
     {
         $states = State::all();
 
-        return view('states.index', compact('states'));
+        return view('pages.states.index', compact('states'));
     }
 
     /**
