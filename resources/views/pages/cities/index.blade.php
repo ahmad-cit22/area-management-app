@@ -32,16 +32,7 @@
                                     <td class="">Bangladesh</td>
                                     <td class="">Bangladesh</td>
                                     <td>
-                                        <div class="action__icon d-flex gap-2">
-                                            <div class="action__icon__item">
-                                                <a href="javascript:void(0)" class="icon"><i
-                                                        class="material-symbols-outlined text-primary">edit</i></a>
-                                            </div>
-                                            <div class="action__icon__item">
-                                                <a href="javascript:void(0)" class="icon delete delete_item"><i
-                                                        class="material-symbols-outlined text-danger">delete</i></a>
-                                            </div>
-                                        </div>
+                                        @include('partials.action-buttons')
                                     </td>
                                 </tr>
                             </tbody>

@@ -30,16 +30,7 @@
                                     <td><span class="order_id">1</span></td>
                                     <td class="">Bangladesh</td>
                                     <td>
-                                        <div class="action__icon d-flex gap-2">
-                                            <div class="action__icon__item">
-                                                <a href="javascript:void(0)" class="icon"><i
-                                                        class="material-symbols-outlined text-primary">edit</i></a>
-                                            </div>
-                                            <div class="action__icon__item">
-                                                <a href="javascript:void(0)" class="icon delete delete_item"><i
-                                                        class="material-symbols-outlined text-danger">delete</i></a>
-                                            </div>
-                                        </div>
+                                        @include('partials.action-buttons', ['id' => 1])
                                     </td>
                                 </tr>
                             </tbody>
@@ -79,6 +70,58 @@
 
 @push('custom-scripts')
     <script>
+        $(document).ready(function() {
+            // Add/Edit Country
+            $('#countryForm').submit(function(e) {
+                e.preventDefault();
+                let id = $('#countryId').val();
+                let url = id ? `/countries/${id}` : '/countries';
+                let method = id ? 'PUT' : 'POST';
+
+                $.ajax({
+                    url: url,
+                    type: method,
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        $('#addCountryModal').modal('hide');
+                        table.ajax.reload();
+                        alert(response.message);
+                    },
+                    error: function(response) {
+                        $('#countryNameError').text(response.responseJSON.errors.name);
+                    }
+                });
+            });
+
+            // Edit Button Click
+            $(document).on('click', '.edit-btn', function() {
+                let id = $(this).data('id');
+                alert(id);
+                // $.get(`/countries/${id}/edit`, function(data) {
+                //     $('#countryId').val(data.id);
+                //     $('#countryName').val(data.name);
+                //     $('#addCountryModal').modal('show');
+                // });
+            });
+
+            // Delete Button Click
+            $(document).on('click', '.delete-btn', function() {
+                let id = $(this).data('id');
+                $('#deleteConfirmationModal').modal('show');
+
+                $('#confirmDelete').off().click(function() {
+                    $.ajax({
+                        url: `/countries/${id}`,
+                        type: 'DELETE',
+                        success: function(response) {
+                            $('#deleteConfirmationModal').modal('hide');
+                            table.ajax.reload();
+                            alert(response.message);
+                        }
+                    });
+                });
+            });
+        });
         // Swal.fire({
         //     icon: "error",
         //     title: "Oops!",
