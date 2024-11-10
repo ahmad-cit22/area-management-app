@@ -15,7 +15,9 @@ Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
 
-    Route::post('/validate-field', [RegisteredUserController::class, 'validateField'])->name('register.validate');
+    Route::post('/validate-register', [RegisteredUserController::class, 'validateField'])->name('register.validate');
+
+    Route::post('/validate-login', [AuthenticatedSessionController::class, 'validateField'])->name('login.validate');
 
     Route::post('register', [RegisteredUserController::class, 'store']);
 

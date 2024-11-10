@@ -44,7 +44,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        return redirect(route('dashboard', absolute: false))->with('success', 'Registration successful!');
     }
 
     public function validateField(Request $request)
@@ -59,7 +59,7 @@ class RegisteredUserController extends Controller
                 $rules = ['email' => 'required|string|email|max:255|unique:users,email'];
                 break;
             case 'username':
-                $rules = ['username' => 'required|string|unique:users,username|max:255|regex:/^[a-zA-Z0-9]+$/'];
+                $rules = ['username' => 'required|string|unique:users,username|min:3|max:255|regex:/^[a-zA-Z0-9]+$/'];
                 break;
             case 'password':
                 $rules = ['password' => 'required|min:8|max:16|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/'];

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Login | Area Management System | Xgenious</title>
 
     <!-- favicon -->
@@ -56,11 +57,12 @@
                             <div class="single_input">
                                 <label class="label_title">Email or Username</label>
                                 <div class="include_icon">
-                                    <input class="form--control radius-5" type="text"
-                                        placeholder="Enter your email address" name="email"
+                                    <input class="form--control radius-5" id="email" type="text"
+                                        placeholder="Enter your email address or username" name="email"
                                         value="{{ old('email') }}" required>
                                     <div class="icon"><span class="material-symbols-outlined">mail</span></div>
                                 </div>
+                                <span class="text-danger" id="emailError"></span>
                                 @error('email')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -68,10 +70,11 @@
                             <div class="single_input">
                                 <label class="label_title">Password</label>
                                 <div class="include_icon">
-                                    <input class="form--control radius-5" type="password"
+                                    <input class="form--control radius-5" id="password" type="password"
                                         placeholder="Enter your password" name="password" required>
                                     <div class="icon"><span class="material-symbols-outlined">lock</span></div>
                                 </div>
+                                <span class="text-danger" id="passwordError"></span>
                                 @error('password')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -137,6 +140,34 @@
     <!-- main js -->
     <script src="assets/js/main.js"></script>
 
+    <script>
+        $('#email').on('input', function() {
+            validateField('email', $(this).val(), '#emailError');
+        });
+
+        $('#password').on('input', function() {
+            validateField('password', $(this).val(), '#passwordError');
+        });
+
+        function validateField(field, value, errorSelector) {
+            $.ajax({
+                url: "{{ route('login.validate') }}",
+                method: 'POST',
+                data: {
+                    field: field,
+                    [field]: value,
+                    _token: $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function() {
+                    $(errorSelector).text('');
+                },
+                error: function(xhr) {
+                    const errors = xhr.responseJSON.errors || {};
+                    $(errorSelector).text(errors[field] ? errors[field][0] : '');
+                }
+            });
+        }
+    </script>
 
 </body>
 
