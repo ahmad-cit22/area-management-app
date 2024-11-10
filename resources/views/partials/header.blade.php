@@ -15,17 +15,6 @@
     <div class="col-sm-4">
         <div class="dashboard__header__right">
             <div class="dashboard__header__right__flex">
-                <div class="dashboard__header__right__item responsive_search">
-                    <a href="javascript:void(0)" class="dashboard__search__icon search__click"> <i
-                            class="material-symbols-outlined">search</i> </a>
-                    <div class="search__wrapper">
-                        <form class="search__wrapper__form" action="#">
-                            <div class="search__wrapper__close"> <i class="fa-solid fa-times"></i> </div>
-                            <input class="search__wrapper__input" type="text" placeholder="Search Here.....">
-                            <button type="submit"><i class="material-symbols-outlined">search</i></button>
-                        </form>
-                    </div>
-                </div>
                 <div class="dashboard__header__right__item">
                     <a href="javascript:void(0)" class="dashboard__header__notification__icon lightMode"
                         id="mode_change"> <i class="material-symbols-outlined">wb_sunny</i>

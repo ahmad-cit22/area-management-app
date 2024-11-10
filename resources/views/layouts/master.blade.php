@@ -34,7 +34,7 @@
                     <div class="dashboard__header single_border_bottom">
                         @include('partials.header')
                     </div>
-                    <div class="dashboard__body posPadding">
+                    <div class="dashboard__body posPadding mt-3">
                         <div class="dashboard__inner">
                             <div class="dashboard__inner__item">
                                 <div class="dashboard__inner__item__flex">

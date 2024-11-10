@@ -16000,9 +16000,9 @@ textarea.textarea-height {
 }
 .dashboard__inner__item__flex {
   width: 100%;
-  display: -webkit-box;
+  /* display: -webkit-box; */
   display: -ms-flexbox;
-  display: flex;
+  /* display: flex; */
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
@@ -22258,6 +22258,9 @@ a.note-dropdown-item:hover {
       -ms-flex-pack: center;
           justify-content: center;
   border: 1px solid transparent;
+}
+.action__icon__item:hover .icon {
+  background: #ffffff;
 }
 .action__icon__item .productDetails_click .material-symbols-outlined,
 .action__icon__item .productDetails_click i,
