@@ -130,14 +130,13 @@
                         </a>
                         <div class="dashboard__header__author__wrapper">
                             <div class="dashboard__header__author__wrapper__list">
-                                <a href="javascript:void(0)" class="dashboard__header__author__wrapper__list__item">Sign
-                                    In</a>
-                                <a href="javascript:void(0)"
-                                    class="dashboard__header__author__wrapper__list__item">Sign
-                                    Up</a>
-                                <a href="javascript:void(0)"
-                                    class="dashboard__header__author__wrapper__list__item">Log
-                                    Out</a>
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <a href="javascript:void(0)"
+                                        class="dashboard__header__author__wrapper__list__item"
+                                        onclick="event.preventDefault(); this.closest('form').submit();">
+                                        Log Out</a>
+                                </form>
                             </div>
                         </div>
                     </div>

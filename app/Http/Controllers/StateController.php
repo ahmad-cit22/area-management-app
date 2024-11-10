@@ -30,7 +30,7 @@ class StateController extends Controller
     /**
      * Display a listing of states
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
@@ -43,7 +43,7 @@ class StateController extends Controller
      * Store a newly created state in storage
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
@@ -59,7 +59,7 @@ class StateController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\State  $state
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, State $state)
     {
@@ -74,7 +74,7 @@ class StateController extends Controller
      * Remove an existing state from storage
      *
      * @param  \App\Models\State  $state
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy(State $state)
     {
