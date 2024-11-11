@@ -1,7 +1,5 @@
 # Area Management CRUD Application 🌍
 
-![APP Screenshot](images/screenshot.jpeg)
-
 This is a Laravel 11-based web application designed to manage areas by handling three main entities: **Country**, **State**, and **City**. It provides a secure and user-friendly authentication system with real-time input validation using AJAX, enhancing user experience and utilizing modern web development practices.
 
 ## Features 🚀
@@ -25,6 +23,9 @@ This is a Laravel 11-based web application designed to manage areas by handling 
    - Each city is tied to a state.
 
 ### Database Relationships 📊
+- **BelongsTo Relationship**:
+   - A **State** belongs to a **Country**.
+   - A **City** belongs to a **State**.
 - **One-to-Many Relationship**:
    - A **Country** can have multiple **States**.
    - A **State** can have multiple **Cities**.
@@ -131,12 +132,6 @@ Before running the tests, ensure your environment is correctly configured:
    php artisan key:generate --env=testing
    ```
 
-5. **Run the Migrations**:  
-   Prepare the test database by running:
-   ```bash
-   php artisan migrate --env=testing
-   ```
-
 ### Running Tests
 
 Once your environment is set up, you can run the test suite using the following command:
@@ -155,7 +150,7 @@ The test suite covers the following:
 - **Login Functionality**: Tests if users can log in with valid credentials.
 - **Logout**: Verifies the logout functionality works correctly.
 - **Registration**: Ensures users can register for a new account.
-- **Real-time Validation**: Tests real-time input validation for username and password fields.
+- **Real-time Validation**: Tests real-time input validation for name, email, username and password fields.
 
 #### **CRUD Tests** 🛠️
 - **Country CRUD Operations**:
