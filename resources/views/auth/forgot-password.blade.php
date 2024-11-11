@@ -58,7 +58,8 @@
                                 <label class="label_title">Enter Email</label>
                                 <div class="include_icon">
                                     <input class="form--control radius-5" type="email"
-                                        placeholder="Enter email or phone" name="email" value="{{ old('email') }}" required>
+                                        placeholder="Enter email or phone" name="email" value="{{ old('email') }}"
+                                        required>
                                     <div class="icon"><span class="material-symbols-outlined">mail</span></div>
                                 </div>
                                 <span class="text-danger" id="emailError"></span>
@@ -110,6 +111,35 @@
     <!-- main js -->
     <script src="assets/js/main.js"></script>
 
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: "success",
+                title: "Done!",
+                text: "{{ session('success') }}",
+            });
+        </script>
+    @endif
+
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                icon: "error",
+                title: "Error!",
+                text: "{{ session('error') }}",
+            });
+        </script>
+    @endif
+
+    @if (session('status'))
+        <script>
+            Swal.fire({
+                icon: "success",
+                title: "Done!",
+                text: "{{ session('status') }}",
+            });
+        </script>
+    @endif
 
 </body>
 

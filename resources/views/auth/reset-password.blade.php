@@ -131,6 +131,35 @@
     <!-- main js -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
 
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: "success",
+                title: "Done!",
+                text: "{{ session('success') }}",
+            });
+        </script>
+    @endif
+
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                icon: "error",
+                title: "Error!",
+                text: "{{ session('error') }}",
+            });
+        </script>
+    @endif
+
+    @if (session('status'))
+        <script>
+            Swal.fire({
+                icon: "success",
+                title: "Done!",
+                text: "{{ session('status') }}",
+            });
+        </script>
+    @endif
 
 </body>
 

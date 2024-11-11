@@ -108,7 +108,8 @@
             <div class="loginForm__right loginForm__bg " style="background-image: url(assets/img/login.jpg);">
                 <div class="loginForm__right__logo">
                     <div class="loginForm__logo">
-                        <a href="{{ route('dashboard') }}"><img src="{{ asset('assets/img/logo.webp') }}" alt=""></a>
+                        <a href="{{ route('dashboard') }}"><img src="{{ asset('assets/img/logo.webp') }}"
+                                alt=""></a>
                     </div>
                 </div>
             </div>
@@ -168,6 +169,36 @@
             });
         }
     </script>
+
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: "success",
+                title: "Done!",
+                text: "{{ session('success') }}",
+            });
+        </script>
+    @endif
+
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                icon: "error",
+                title: "Error!",
+                text: "{{ session('error') }}",
+            });
+        </script>
+    @endif
+
+    @if (session('status'))
+        <script>
+            Swal.fire({
+                icon: "success",
+                title: "Done!",
+                text: "{{ session('status') }}",
+            });
+        </script>
+    @endif
 
 </body>
 
