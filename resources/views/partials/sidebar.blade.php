@@ -3,8 +3,8 @@
     <div class="dashboard__top">
         <div class="dashboard__top__logo">
             <a href="{{route('dashboard')}}">
-                <img class="main_logo" src="assets/img/logo.web" alt="logo">
-                <img class="iocn_view__logo" src="assets/img/Favicon.png" alt="logo_icon">
+                <img class="main_logo" src="{{ asset('assets/img/logo.webp') }}" alt="logo">
+                <img class="iocn_view__logo" src="{{ asset('assets/img/Favicon.png') }}" alt="logo_icon">
             </a>
         </div>
     </div>

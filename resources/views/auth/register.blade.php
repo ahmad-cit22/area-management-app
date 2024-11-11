@@ -131,7 +131,7 @@
             <div class="loginForm__right loginForm__bg " style="background-image: url(assets/img/login.jpg);">
                 <div class="loginForm__right__logo">
                     <div class="loginForm__logo">
-                        <a href="{{ route('dashboard') }}"><img src="assets/img/logo.web" alt=""></a>
+                        <a href="{{ route('dashboard') }}"><img src="{{ asset('assets/img/logo.webp') }}" alt=""></a>
                     </div>
                 </div>
             </div>
