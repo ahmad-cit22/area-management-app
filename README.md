@@ -1,5 +1,7 @@
 # Area Management CRUD Application 🌍
 
+![APP Screenshot](images/screenshot.jpeg)
+
 This is a Laravel 11-based web application designed to manage areas by handling three main entities: **Country**, **State**, and **City**. It provides a secure and user-friendly authentication system with real-time input validation using AJAX, enhancing user experience and utilizing modern web development practices.
 
 ## Features 🚀
@@ -87,21 +89,92 @@ This is a Laravel 11-based web application designed to manage areas by handling 
 
 ## Testing 🧪
 
-This application uses **Pest** for testing. 
+This application uses **Pest** for testing, a delightful PHP testing framework that helps you write clear and expressive tests.
 
-To run the test suite, use the following command:
+### Setup Instructions ⚙️
 
+Before running the tests, ensure your environment is correctly configured:
+
+1. **Ensure Pest is Installed**:  
+   If Pest is not installed in your project yet, you can add it via Composer:
+   ```bash
+   composer require pestphp/pest --dev
+   ```
+
+2. **Initialize Pest**:  
+   After installation, initialize Pest in your project:
+   ```bash
+   php artisan pest:install
+   ```
+
+3. **Create the `.env.testing` File**:  
+   In the root directory of your project, create a `.env.testing` file with the following content:
+   ```env
+    APP_ENV=testing
+    APP_KEY=base64:+EhHUCsv8cRrKva+QijNRmA7bf7Uk1FkBht5i1r0LdA=
+
+    LOG_CHANNEL=stack
+    LOG_LEVEL=debug
+
+    DB_CONNECTION=sqlite
+    DB_DATABASE=:memory:
+
+    CACHE_DRIVER=array
+    QUEUE_CONNECTION=sync
+    SESSION_DRIVER=array
+    MAIL_MAILER=log
+   ```
+
+4. **Generate the Application Key**:  
+   If you haven't generated an application key yet, you can do so for your testing environment with:
+   ```bash
+   php artisan key:generate --env=testing
+   ```
+
+5. **Run the Migrations**:  
+   Prepare the test database by running:
+   ```bash
+   php artisan migrate --env=testing
+   ```
+
+### Running Tests
+
+Once your environment is set up, you can run the test suite using the following command:
 ```bash
 php artisan test
 ```
 
-### Test Coverage 📝
-- **Authentication Tests**:
-    - Login view, login functionality, logout, and registration.
-    - Real-time validation for username and password fields.
+This will run all of the application's test cases, including those for authentication and CRUD operations.
 
-- **CRUD Tests**:
-    - Tests for the Country, State, and City CRUD operations including listing, storing, editing, updating, and deleting records.
+### Test Coverage 📝
+
+The test suite covers the following:
+
+#### **Authentication Tests** 🔑
+- **Login View**: Ensures the login page is accessible.
+- **Login Functionality**: Tests if users can log in with valid credentials.
+- **Logout**: Verifies the logout functionality works correctly.
+- **Registration**: Ensures users can register for a new account.
+- **Real-time Validation**: Tests real-time input validation for username and password fields.
+
+#### **CRUD Tests** 🛠️
+- **Country CRUD Operations**:
+  - Listing all countries.
+  - Storing a new country.
+  - Editing and updating existing country details.
+  - Deleting a country.
+
+- **State CRUD Operations**:
+  - Listing all states.
+  - Storing a new state.
+  - Editing and updating state details.
+  - Deleting a state.
+
+- **City CRUD Operations**:
+  - Listing all cities.
+  - Storing a new city.
+  - Editing and updating city details.
+  - Deleting a city.
 
 ## Contributing 🤝
 
