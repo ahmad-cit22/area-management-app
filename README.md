@@ -38,7 +38,7 @@ This is a Laravel 11-based web application designed to manage areas by handling 
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/your-username/area-management-app.git
+    git clone https://github.com/ahmad-cit22/area-management-app.git
     cd area-management-app
     ```
 
@@ -87,7 +87,9 @@ This is a Laravel 11-based web application designed to manage areas by handling 
 
 ## Testing 🧪
 
-This application uses **Pest** for testing. To run the test suite, use the following command:
+This application uses **Pest** for testing. 
+
+To run the test suite, use the following command:
 
 ```bash
 php artisan test
