@@ -183,10 +183,6 @@ We welcome contributions to improve this project! If you want to contribute:
 
 Please ensure your code passes all tests before submitting your pull request.
 
-## License 📜
-
-This project is licensed under the **MIT License**. See [LICENSE](LICENSE) for more details.
-
 ---
 
 We hope you enjoy using the **Area Management CRUD Application**! If you encounter any issues or have any suggestions, feel free to open an issue or contribute to the project. Happy coding! 🚀
