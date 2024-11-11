@@ -31,14 +31,15 @@
 
 <script>
     $(document).ready(function() {
-        $('.data-table').DataTable({
-            processing: true,
-            serverSide: false,
-            responsive: true,
-            fixedColumns: true,
-            fixedHeader: true,
-            // order: [[0, 'desc']],
-        });
+        if ($('.data-table tbody tr').length > 1) {
+            $('.data-table').DataTable({
+                processing: true,
+                serverSide: false,
+                responsive: true,
+                fixedColumns: true,
+                fixedHeader: true,
+            });
+        }
 
         $('.select2').select2();
     });

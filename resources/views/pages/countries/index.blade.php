@@ -15,7 +15,7 @@
                 </div>
                 <div class="dashboard__card__inner border_top_1">
                     <div class="dashboard__inventory__table custom_table">
-                        <table class="table table-bordered table-striped data-table" id="table">
+                        <table class="table table-bordered table-striped data-table">
                             <thead>
                                 <tr>
                                     <th>SL</th>
