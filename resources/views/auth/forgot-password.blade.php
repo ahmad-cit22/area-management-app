@@ -53,13 +53,18 @@
                     <div class="loginForm__wrapper mt-4">
                         <!-- Form -->
                         <form method="POST" action="{{ route('password.email') }}" class="custom_form">
+                            @csrf
                             <div class="single_input">
                                 <label class="label_title">Enter Email</label>
                                 <div class="include_icon">
                                     <input class="form--control radius-5" type="email"
-                                        placeholder="Enter email or phone" required>
+                                        placeholder="Enter email or phone" name="email" value="{{ old('email') }}" required>
                                     <div class="icon"><span class="material-symbols-outlined">mail</span></div>
                                 </div>
+                                <span class="text-danger" id="emailError"></span>
+                                @error('email')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="btn_wrapper single_input d-flex gap-2">
                                 <button type="submit" class="cmn_btn w-100 radius-5">Submit</button>
@@ -72,7 +77,8 @@
             <div class="loginForm__right loginForm__bg " style="background-image: url(assets/img/login.jpg);">
                 <div class="loginForm__right__logo">
                     <div class="loginForm__logo">
-                        <a href="{{ route('dashboard') }}"><img src="{{ asset('assets/img/logo.webp') }}" alt=""></a>
+                        <a href="{{ route('dashboard') }}"><img src="{{ asset('assets/img/logo.webp') }}"
+                                alt=""></a>
                     </div>
                 </div>
             </div>

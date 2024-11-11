@@ -57,6 +57,10 @@
                                         value="{{ old('email') }}" required>
                                     <div class="icon"><span class="material-symbols-outlined">mail</span></div>
                                 </div>
+                                <span class="text-danger" id="emailError"></span>
+                                @error('email')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="single_input">
                                 <label class="label_title">Password</label>
@@ -65,6 +69,10 @@
                                         placeholder="Enter your password" required>
                                     <div class="icon"><span class="material-symbols-outlined">lock</span></div>
                                 </div>
+                                <span class="text-danger" id="passwordError"></span>
+                                @error('password')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="single_input">
                                 <label class="label_title">Confirm Password</label>
@@ -73,6 +81,10 @@
                                         placeholder="confirm password" required>
                                     <div class="icon"><span class="material-symbols-outlined">lock</span></div>
                                 </div>
+                                <span class="text-danger" id="passwordConfirmationError"></span>
+                                @error('password_confirmation')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="btn_wrapper single_input">
                                 <button type="submit" class="cmn_btn w-100 radius-5">Reset Password</button>
